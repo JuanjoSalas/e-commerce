@@ -10,7 +10,7 @@ const GenreController = {
       res.status(500).send(error);
     }
   },
-  /*async update(req, res) {
+  async update(req, res) {
     try {
       await Genre.update(req.body,{
         where: {
@@ -41,8 +41,8 @@ const GenreController = {
     } catch (error) {
       console.log(error)
     }
-  },*/
-  /*async getAll(req,res){
+  },
+  async getAll(req,res){
     try {
         const genres = await Genre.findAll({
             include:[{ model: Game,attributes:["name"], through: { attributes: [] } }]
@@ -52,7 +52,7 @@ const GenreController = {
       console.error(error);
       res.status(500).send(error);  
     }
-}*/
+}
 };
 
 module.exports = GenreController;

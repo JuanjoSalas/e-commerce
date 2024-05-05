@@ -12,7 +12,7 @@ const GameController = {
       res.status(500).send(error);
     }
   },
-  /*async update(req, res) {
+  async update(req, res) {
     try {
       await Game.update(req.body, {
         where: {
@@ -28,8 +28,8 @@ const GameController = {
         .status(500)
         .send({ msg: "No ha sido posible actualizar el juego de mesa" });
     }
-  },*/
-  /*async delete(req, res) {
+  },
+  async delete(req, res) {
     try {
       await Game.destroy({
         where: {
@@ -45,20 +45,18 @@ const GameController = {
     } catch (error) {
       console.log(error);
     }
-  },*/
-  /*async getAll(req, res) {
+  },
+  async getAll(req,res){
     try {
-      const games = await Game.findAll({
-        include: [
-          { model: Genre, attributes: ["name"], through: { attributes: [] } },
-        ],
-      });
-      res.send(games);
+        const games = await Game.findAll({
+            include:[{ model: Genre,attributes:["name"], through: { attributes: [] } }]
+        });
+        res.send({ msg:"Todos los géneros",games});
     } catch (error) {
       console.error(error);
-      res.status(500).send(error);
+      res.status(500).send(error);  
     }
-  },*/
+  }
 };
 
 module.exports = GameController;
