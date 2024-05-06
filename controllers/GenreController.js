@@ -19,7 +19,7 @@ const GenreController = {
       });
       const genre = await Genre.findByPk(req.params.id)
       genre.setGames(req.body.GameId);
-      res.send({ msg: "El genero se ha actualizado con éxito"});
+      res.send({ msg: "El genero se ha actualizado con éxito",genre});
     } catch (error) {
       console.error(error);
       res.status(500).send({ msg: "No ha sido posible actualizar el genero" });
@@ -64,16 +64,17 @@ const GenreController = {
       res.status(500).send({ msg:"No ha sido posible mostrar el genero" });
     }
   },
-/*async getByName(req,res) {
-  try {
-
-
-   res.send({ msg: "Aqui tienes el género"});
+  async getByName(req,res) {
+    try {
+      const genre = await Genre.findOne({ where: { name: req.params.name }},{
+        include:[{ model: Game,attributes:["name"], through: { attributes: [] } }]
+      });
+      res.send({ msg: "Aqui tienes el género",genre});
     } catch (error) {
       console.error(error);
       res.status(500).send({ msg: "No ha sido posible mostrar el genero" }); 
+    }
   }
-}*/
 };
 
 module.exports = GenreController;

@@ -21,7 +21,7 @@ const GameController = {
       });
       const game = await Game.findByPk(req.params.id);
       game.setGenres(req.body.GenreId);
-      res.status(201).send({ msg: "Juego de mesa actualizado con éxito" });
+      res.status(201).send({ msg: "Juego de mesa actualizado con éxito",game });
     } catch (error) {
       console.error(error);
       res
