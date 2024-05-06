@@ -77,20 +77,30 @@ const GameController = {
     } catch (error) {
       console.error(error);
       res.status(500).send({ msg: "No ha sido posible mostrar el juego de mesa" }); 
-  }
-},
-async getByPrice(req,res) {
-  try {
-    const game = await Game.findOne({ where: { price: req.params.price }},{
+    }
+  },
+  async getByPrice(req,res) {
+    try {
+      const game = await Game.findOne({ where: { price: req.params.price }},{
         include:[{ model: Genre,attributes:["name"], through: { attributes: [] } }]
       });
-   res.send({ msg: "Aqui tienes los juegos de mesa por ese precio",game});
+      res.send({ msg: "Aqui tienes los juegos de mesa por ese precio",game});
     } catch (error) {
     console.error(error);
     res.status(500).send({ msg: "No ha sido posible mostrar los juegos de mesa con ese precio" }); 
-  }
-},
-
+    }
+  },
+  /*async getByPrice(req,res) {
+    try {
+      const game = await Game.findAll({
+        include:[{ model: Genre,attributes:["name"], through: { attributes: [] } }]
+      });
+      res.send({ msg: "Aqui tienes los juegos de mesa por ese precio",game});
+    } catch (error) {
+    console.error(error);
+    res.status(500).send({ msg: "No ha sido posible mostrar los juegos de mesa con ese precio" }); 
+    }
+  }*/
 };
 
 module.exports = GameController;
