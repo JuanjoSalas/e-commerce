@@ -56,7 +56,38 @@ const GameController = {
       console.error(error);
       res.status(500).send(error);  
     }
+  },
+  async getById(req,res) {
+    try {
+      const game = await Game.findByPk(req.params.id,{
+        include:[{ model: Genre,attributes:["name"], through: { attributes: [] } }]
+      });
+      res.send({ msg: "Aqui tienes el juego de mesa",game});
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ msg: "No ha sido posible mostrar el juego de mesa" }); 
+    }
+  },
+  /*async getByName(req,res) {
+  try {
+
+
+   res.send({ msg: "Aqui tienes el juego de mesa"});
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ msg: "No ha sido posible mostrar el juego de mesa" }); 
   }
+},
+/*async getByPrice(req,res) {
+  try {
+
+
+   res.send({ msg: "Aqui tienes los juegos de mesa por ese precio"});
+    } catch (error) {
+    console.error(error);
+    res.status(500).send({ msg: "No ha sido posible mostrar los juegos de mesa con ese precio" }); 
+  }
+}*/
 };
 
 module.exports = GameController;

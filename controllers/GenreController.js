@@ -42,17 +42,38 @@ const GenreController = {
       console.log(error)
     }
   },
-  async getAll(req,res){
+  async getAll(req,res) {
     try {
         const genres = await Genre.findAll({
-            include:[{ model: Game,attributes:["name"], through: { attributes: [] } }]
+          include:[{ model: Game,attributes:["name"], through: { attributes: [] } }]
         });
         res.send({ msg:"Todos los géneros",genres});
-    } catch (error) {
+      } catch (error) {
       console.error(error);
       res.status(500).send(error);  
     }
-}
+  },
+  async getById(req,res) {
+    try {
+        const genre = await Genre.findByPk(req.params.id,{
+          include:[{ model: Game,attributes:["name"], through: { attributes: [] } }]
+        });
+      res.send({ msg:"Aqui tienes el género",genre});
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ msg:"No ha sido posible mostrar el genero" });
+    }
+  },
+/*async getByName(req,res) {
+  try {
+
+
+   res.send({ msg: "Aqui tienes el género"});
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ msg: "No ha sido posible mostrar el genero" }); 
+  }
+}*/
 };
 
 module.exports = GenreController;
