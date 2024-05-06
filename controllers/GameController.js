@@ -68,11 +68,12 @@ const GameController = {
       res.status(500).send({ msg: "No ha sido posible mostrar el juego de mesa" }); 
     }
   },
-  /*async getByName(req,res) {
+  async getByName(req,res) {
   try {
-
-
-   res.send({ msg: "Aqui tienes el juego de mesa"});
+    const game = await Game.findOne({ where: { name: req.params.name }},{
+        include:[{ model: Genre,attributes:["name"], through: { attributes: [] } }]
+      });
+   res.send({ msg: "Aqui tienes el juego de mesa",game});
     } catch (error) {
       console.error(error);
       res.status(500).send({ msg: "No ha sido posible mostrar el juego de mesa" }); 
