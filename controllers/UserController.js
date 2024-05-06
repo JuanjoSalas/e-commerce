@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { User } = require("../models/index");
 const bcrypt = require ('bcryptjs');
 
@@ -10,6 +11,26 @@ const UserController ={
         } catch (error) {
           console.error(error)
           res.status(500).send(error)  
+        }
+    },
+    async login(req,res) {
+        try {
+            const user = await User.findOne({
+                where:{
+                    email:req.body.email
+                }
+            })
+            if(!user){
+                return res.status(400).send({ msg:"Usuario o contraseña incorrectos"})
+            }
+            const isMatch = bcrypt.compareSync(req.body.password, user.password);
+            if(!isMatch){
+                return res.status(400).send({ msg:"Usuario o contraseña incorrectos"});
+            }
+            res.send(user)
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
         }
     }
 }
