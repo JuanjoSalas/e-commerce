@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const GameController = require('../controllers/GameController')
+const {authentication} = require('../middleware/authentication')
 
-router.post('/',GameController.create);
-router.put('/id/:id',GameController.update);
-router.delete('/id/:id',GameController.delete);
+
+router.post('/',authentication,GameController.create);
+router.put('/id/:id',authentication,GameController.update);
+router.delete('/id/:id',authentication,GameController.delete);
 router.get('/',GameController.getAll);
 router.get('/id/:id',GameController.getById);
 router.get('/name/:name',GameController.getByName);
