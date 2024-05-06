@@ -1,6 +1,8 @@
 const { where } = require("sequelize");
 const { User } = require("../models/index");
-const bcrypt = require ('bcryptjs');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { jwt_secret } = require('../config/config.json')['development']
 
 const UserController ={
     async create(req,res){
@@ -27,7 +29,8 @@ const UserController ={
             if(!isMatch){
                 return res.status(400).send({ msg:"Usuario o contraseña incorrectos"});
             }
-            res.send(user)
+            const token = jwt.sign({id:user.id},jwt_secret)
+            res.send(token,user)
         } catch (error) {
             console.error(error);
             res.status(500).send(error);
