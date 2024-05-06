@@ -27,10 +27,10 @@ const UserController ={
             }
             const isMatch = bcrypt.compareSync(req.body.password, user.password);
             if(!isMatch){
-                return res.status(400).send({ msg:"Usuario o contraseña incorrectos"});
+                return res.status(400).send({ msg:"Usuario o contraseña incorrectos"})
             }
             const token = jwt.sign({id:user.id},jwt_secret)
-            res.send(token,user)
+            res.send({ msg:"Bienvenid@" + user.name,token,user});
         } catch (error) {
             console.error(error);
             res.status(500).send(error);
