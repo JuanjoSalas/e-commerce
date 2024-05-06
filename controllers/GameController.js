@@ -89,7 +89,8 @@ async getByPrice(req,res) {
     console.error(error);
     res.status(500).send({ msg: "No ha sido posible mostrar los juegos de mesa con ese precio" }); 
   }
-}
+},
+
 };
 
 module.exports = GameController;

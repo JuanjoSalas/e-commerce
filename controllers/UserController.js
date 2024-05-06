@@ -1,10 +1,11 @@
-const {User} = require("../models/index");
+const { User } = require("../models/index");
+const bcrypt = require ('bcryptjs');
 
 const UserController ={
     async create(req,res){
         try {
-            req.body.role="user"
-            const user = await User.create(req.body)
+            const password = await bcrypt.hash(req.body.password,10)
+            const user = await User.create({...req.body.password,role:"user"})
             res.status(201).send({ msg:"Usuario creado con éxito",user})
         } catch (error) {
           console.error(error)
