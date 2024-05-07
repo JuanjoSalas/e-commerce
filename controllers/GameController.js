@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { Game, Genre, GenreGame, User, Sequelize } = require("../models/index");
 const { Op } = Sequelize;
 
@@ -51,7 +52,7 @@ const GameController = {
         const games = await Game.findAll({
             include:[{ model: Genre,attributes:["name"], through: { attributes: [] } }]
         });
-        res.send({ msg:"Todos los géneros",games});
+        res.send({ msg:"Todos los juegos",games});
     } catch (error) {
       console.error(error);
       res.status(500).send(error);  
@@ -90,17 +91,18 @@ const GameController = {
     res.status(500).send({ msg: "No ha sido posible mostrar los juegos de mesa con ese precio" }); 
     }
   },
-  /*async getByPrice(req,res) {
+  async orderPrice(req,res) {
     try {
-      const game = await Game.findAll({
+      const game = await Game.findAll({ 
+        order: [['price', 'DESC']],
         include:[{ model: Genre,attributes:["name"], through: { attributes: [] } }]
       });
-      res.send({ msg: "Aqui tienes los juegos de mesa por ese precio",game});
+      res.send({ msg: "Aqui tienes los juegos de mesa por precio",game});
     } catch (error) {
     console.error(error);
-    res.status(500).send({ msg: "No ha sido posible mostrar los juegos de mesa con ese precio" }); 
+    res.status(500).send({ msg: "No ha sido posible mostrar los juegos de mesa por precio" }); 
     }
-  }*/
+  }
 };
 
 module.exports = GameController;

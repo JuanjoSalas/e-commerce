@@ -11,6 +11,6 @@ router.get('/',GameController.getAll);
 router.get('/id/:id',GameController.getById);
 router.get('/name/:name',GameController.getByName);
 router.get('/price/:price',GameController.getByPrice);
-//router.get('/price/:price',GameController.orderPrice);
+router.get('/price',GameController.orderPrice);
 
 module.exports = router;
