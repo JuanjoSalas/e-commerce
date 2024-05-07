@@ -1,8 +1,8 @@
-const { where } = require("sequelize");
-const { User, Token } = require("../models/index");
+const { User, Token, Order, Sequelize } = require("../models/index");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { jwt_secret } = require('../config/config.json')['development']
+const {Op} = Sequelize
 
 const UserController ={
     async create(req,res){
@@ -47,12 +47,23 @@ const UserController ={
                     ]
                 }
             });
-            res.send({ message: 'Desconectado con éxito' })
+            res.send({ msg: "Desconectado con éxito" })
         } catch (error) {
             console.log(error)
-            res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
+            res.status(500).send({ msg: "hubo un problema al tratar de desconectarte" })
         }
-    }
+    },
+    async getAll(req, res) {
+        try {
+            const users = await User.findAll({
+                include:[{ model: Order,attributes:["reference"]}]
+            });
+            res.send({ msg:"Todos los géneros",users});
+        } catch (error) {
+          console.error(error);
+          res.status(500).send(error);  
+        }
+      } 
 }
 
 module.exports = UserController;
