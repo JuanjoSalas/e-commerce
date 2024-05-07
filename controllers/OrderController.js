@@ -11,7 +11,7 @@ const OrderController ={
           res.status(500).send(error);  
         }
     },
-    /*async getAll(req,res){
+    async getAll(req,res){
         try {
             const orders = await Order.findAll({
                 include:[{ model: Game,attributes:["name"], through: { attributes: [] } }]
@@ -21,7 +21,7 @@ const OrderController ={
           console.error(error);
           res.status(500).send(error);  
         }
-    }*/
+    }
 }
 
 module.exports = OrderController;
