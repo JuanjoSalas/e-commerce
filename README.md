@@ -71,12 +71,12 @@ A  su vez un Juego de Mesa puede tener varias Categorías y una Categoría mucho
 
 ## Documentación API
 
-![Banner](https://github.com/JuanjoSalas/e-commerce/assets/161235632/b18d008b-dbc5-4b10-8323-3e0a135fe97d)
+https://documenter.getpostman.com/view/34523681/2sA3JJA3XC
 
 
 ## Autor
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Banner](https://github.com/JuanjoSalas/e-commerce/assets/161235632/b18d008b-dbc5-4b10-8323-3e0a135fe97d)
 
 - [GitHub](https://www.github.com/JuanjoSalas)
 - [LinkedIn](https://www.linkedin.com/in/juanjo-salas-jiménez)
