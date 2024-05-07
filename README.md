@@ -8,6 +8,7 @@ Este proyecto consta del back-end de un comercio electrónico de juegos de mesa.
 
 En él tendremos que crearnos nuestro usuario y una vez logueados podremos acceder al catálogo de juegos con sus categorías, pudiéndolos buscar por nombre, precio, id, categoría, etc.
 
+
 ## Tecnologías utilizadas
 
 - JavaScript
@@ -42,7 +43,9 @@ Modificar lo siguiente:
       "jwt_secret":"Introduce aqui una contraseña"
     },
 ```
-Sustituir el nombre del archivo por config.json.    
+Sustituir el nombre del archivo por config.json.   
+
+
 ## Documentación
 
 Este proyecto consta de:
@@ -53,7 +56,8 @@ Este proyecto consta de:
 
 Teniendo esto claro procedemos a realizar un diagrama en MySQL.
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![diagrama](https://github.com/JuanjoSalas/e-commerce/assets/161235632/9a36760d-fc2d-48a1-a388-1a8396cb3461)
+
 
 En este podremos observar las tablas que hemos utilizado y el tipo de relación de cada una.
 
@@ -63,10 +67,11 @@ Por ello en la tabla de Pedidos incluimos el id del Usuario.
 Un Pedido puede incluir varios Juegos de Mesa, y un mismo Juego puede estar en muchos pedidos por lo que tendremos una relación muchos a muchos y por lo tanto una tabla intermedia entre ellas.
 
 A  su vez un Juego de Mesa puede tener varias Categorías y una Categoría muchos juegos, Por lo tanto tienen una relación de muchos a muchos y por lo tanto una tabla intermedia.
+
+
 ## Documentación API
 
-https://documenter.getpostman.com/view/34523681/2sA3JJA3XC
-
+![Banner](https://github.com/JuanjoSalas/e-commerce/assets/161235632/b18d008b-dbc5-4b10-8323-3e0a135fe97d)
 
 
 ## Autor
