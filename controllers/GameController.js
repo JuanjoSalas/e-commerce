@@ -1,9 +1,8 @@
-const { where } = require("sequelize");
 const { Game, Genre, GenreGame, User, Sequelize } = require("../models/index");
 const { Op } = Sequelize;
 
 const GameController = {
-  async create(req, res) {
+  async create(req, res, next) {
     try {
       const game = await Game.create(req.body);
       game.addGenre(req.body.GenreId);
@@ -11,6 +10,7 @@ const GameController = {
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
+      next(error)
     }
   },
   async update(req, res) {

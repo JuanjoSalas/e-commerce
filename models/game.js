@@ -19,13 +19,69 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Game.init({
-    name: DataTypes.STRING,
-    price: DataTypes.FLOAT,
-    players: DataTypes.INTEGER,
-    age: DataTypes.INTEGER,
-    company: DataTypes.STRING,
-    reference: DataTypes.INTEGER,
-    image: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Por favor introduce el nombre del juego",
+        },
+      },
+    },
+    price: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Por favor introduce el precio del juego",
+        },
+      },
+    },
+    players: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Por favor introduce el numero de jugadores",
+        },
+      },
+    },
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Por favor introduce la edad recomendada",
+        },
+      },
+    },
+    company: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Por favor introduce la marca",
+        },
+      },
+    },
+    reference: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Por favor introduce la referencia",
+        },
+      },
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Por favor introduce la url",
+        },
+      },
+    },
   }, {
     sequelize,
     modelName: 'Game',
