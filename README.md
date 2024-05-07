@@ -1,7 +1,8 @@
 
 # Enredados comercio electrónico
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![logo](https://github.com/JuanjoSalas/e-commerce/assets/161235632/b3f1304e-393c-4887-ad56-6abfddfddd5c)
+
 
 
 Este proyecto consta del back-end de un comercio electrónico de juegos de mesa.
